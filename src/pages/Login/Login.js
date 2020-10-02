@@ -22,14 +22,18 @@ function Login({ history }) {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form action="">
-        <label htmlFor="">Email</label>
-        <input type="email" onChange={event => setEmail(event.currentTarget.value)} />
-        <label htmlFor="">Password</label>
-        <input type="password" onChange={event => setPassword(event.currentTarget.value)} />
-        <button onClick={submit} >Login</button>
+    <div className="vh-100 d-flex flex-column align-items-center">
+      <h2 className="mt-5">Login</h2>
+      <form action="d-flex flex-column">
+        <div className="form-group">
+          <label htmlFor="">Email</label>
+          <input className="form-control" type="email" required onChange={event => setEmail(event.currentTarget.value)} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="">Password</label>
+          <input className="form-control" type="password" required onChange={event => setPassword(event.currentTarget.value)} />
+        </div>
+        <button className="btn btn-primary" onClick={submit} >Login</button>
       </form>
     </div>
     // <h1>Hello</h1>

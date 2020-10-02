@@ -56,25 +56,35 @@ function Signup({ history }) {
   }
 
   return (
-    <div>
-      <h2>Sign up</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">Name</label>
-        <input type="text" id="name" name="firstName" onChange={handleChange} />
+    <div className="vh-100 d-flex flex-column align-items-center">
+      <h2 className="mt-5" >Sign up</h2>
+      <form className="d-flex flex-column" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="firstName">Name</label>
+          <input className="form-control" type="text" id="name" name="firstName" placeholder="Pepe" required onChange={handleChange} />
+        </div>
 
-        <label htmlFor="lastName">Last Name</label>
-        <input type="text" id="name" name="lastName" onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="lastName">Last Name</label>
+          <input className="form-control" type="text" id="name" name="lastName" placeholder="Carlos" required onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">Portfolio</label>
-        <input type="text" id="lastName" name="portfolio" onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="">Portfolio</label>
+          <input className="form-control" type="text" id="lastName" name="portfolio" placeholder="https://name.com" required onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">Email</label>
-        <input type="email" name="email" onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="">Email</label>
+          <input className="form-control" type="email" name="email" placeholder="name@example.com" required onChange={handleChange} />
+        </div>
 
-        <label htmlFor="">Password</label>
-        <input type="password" onChange={event => setPassword(event.currentTarget.value)} />
+        <div className="form-group">
+          <label htmlFor="">Password</label>
+          <input className="form-control" type="password" required onChange={event => setPassword(event.currentTarget.value)} />
+        </div>
 
-        <button onClick={handleClick} >Sign up</button>
+        <button className="btn btn-primary" onClick={handleClick} >Sign up</button>
       </form>
     </div>
   )
