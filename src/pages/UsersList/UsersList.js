@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
+import Loader from '../../components/Loader/Loader'
 import UsersCards from '../../components/UsersCards/UsersCards'
 
 import firebaseApp from '../../Config'
 
-function UsersList({ history }) {
+function UsersList({ history, currentUserEmail }) {
 
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState('')
@@ -43,9 +44,7 @@ function UsersList({ history }) {
 
   if (loading && !data) {
     return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
+      <Loader />
     )
   }
 
@@ -58,20 +57,23 @@ function UsersList({ history }) {
   }
 
   return (
-    <div>
-      {
-        data.map(item => {
-          return (
-            <div key={item.id}>
-              <Link to={`/users_list/${item.id}`}>
-                <UsersCards
-                  cards={item}
-                />
-              </Link>
-            </div>
-          )
-        })
-      }
+    <div className="usersList d-flex flex-column mx-auto">
+      <button className="btn btn-danger align-self-end mt-4 mb-4 mr-4" onClick={signOut}>Sign Out</button>
+      <div className="d-flex justify-content-between flex-wrap">
+        {
+          data.map(item => {
+            return (
+              <div className="mr-2 mb-4 userCardInformation" key={item.id}>
+                <Link to={`/users_list/${item.id}`} className="text-decoration-none">
+                  <UsersCards
+                    cards={item}
+                  />
+                </Link>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }

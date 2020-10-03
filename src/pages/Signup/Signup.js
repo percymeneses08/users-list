@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import firebaseApp from '../../Config'
 
@@ -15,7 +16,7 @@ function Signup({ history }) {
     portfolio: "",
     email: ""
   })
-  const [error, setError] = useState('')
+  const [error, setError] = useState(null)
   const [loader, setLoader] = useState(true)
 
   const handleSubmit = async event => {
@@ -40,8 +41,8 @@ function Signup({ history }) {
       setLoader(false)
     }
   }
-  const handleClick = event => {
-    console.log('Sign up clicked')
+  const handleClick = _ => {
+    // console.log('Sign up clicked')
   }
   const handleChange = event => {
     const { name, value } = event.currentTarget
@@ -57,6 +58,7 @@ function Signup({ history }) {
 
   return (
     <div className="vh-100 d-flex flex-column align-items-center">
+      <Link to="/" className="align-self-start ml-5 mt-3">Home</Link>
       <h2 className="mt-5" >Sign up</h2>
       <form className="d-flex flex-column" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -86,6 +88,10 @@ function Signup({ history }) {
 
         <button className="btn btn-primary" onClick={handleClick} >Sign up</button>
       </form>
+      {
+        error &&
+        <h6 className="w-50 mt-5 text-danger text-center">{error.message}</h6>
+      }
     </div>
   )
 }
