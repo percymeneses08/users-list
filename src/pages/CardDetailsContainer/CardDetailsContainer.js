@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import UsersCards from '../../components/UsersCards/UsersCards'
+import Loader from '../../components/Loader/Loader'
 
 import firebaseApp from '../../Config'
+import './CardDetailsContainer.css'
 
 function CardDetailsContainer({ ...rest }) {
   const [data, setData] = useState('')
@@ -26,11 +29,16 @@ function CardDetailsContainer({ ...rest }) {
     }
   }
 
+  const handleDelete = async _ => {
+    const id = rest.computedMatch.params.cardId
+    const db = firebaseApp.firestore()
+    await db.collection("cards").doc(id).delete()
+    await firebaseApp.auth().currentUser.delete()
+  }
+
   if (loading && !data) {
     return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
+      <Loader />
     )
   }
 
@@ -43,8 +51,20 @@ function CardDetailsContainer({ ...rest }) {
   }
 
   return (
-    <div>
+    <div className="cardDetailsContainer mx-auto mt-5">
+      <Link className="btn btn-warning mb-3" to="/users_list">Go back</Link>
       <UsersCards cards={data} />
+      {
+        rest.currentUserEmail == data.email ? (
+          <div className="d-flex justify-content-center mt-3">
+            <Link className="btn btn-success mr-3" to={`/users_list/${data.id}/edit`}>Edit information</Link>
+            <button className="btn btn-danger" onClick={handleDelete}>Delete account</button>
+          </div>
+        ) : (
+            // <Link className="btn btn-warning mt-3" to="/users_list">Go back</Link>
+            <div></div>
+          )
+      }
     </div>
   )
 }

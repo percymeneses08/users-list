@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import firebaseApp from '../../Config'
 
@@ -15,14 +16,16 @@ function Login({ history }) {
       await firebaseApp.auth().signInWithEmailAndPassword(email, password)
 
       history.push('/users_list')
-    } catch (error) {
-      console.log(error.message)
-      setError(error)
+    } catch (err) {
+      setError(err)
+      console.log(error)
+      // history.push('/login')
     }
   }
 
   return (
     <div className="vh-100 d-flex flex-column align-items-center">
+      <Link className="align-self-start ml-5 mt-3" to="/">Home</Link>
       <h2 className="mt-5">Login</h2>
       <form action="d-flex flex-column">
         <div className="form-group">
@@ -35,8 +38,11 @@ function Login({ history }) {
         </div>
         <button className="btn btn-primary" onClick={submit} >Login</button>
       </form>
+      {
+        error &&
+        <h6 className="w-50 mt-5 text-danger text-center">{error.message}</h6>
+      }
     </div>
-    // <h1>Hello</h1>
   )
 }
 

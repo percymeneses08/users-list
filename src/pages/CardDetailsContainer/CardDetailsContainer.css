@@ -1,0 +1,9 @@
+.cardDetailsContainer {
+  width: 50%;
+}
+
+@media screen and (max-width: 425px) {
+  .cardDetailsContainer {
+    width: 75%;
+  }
+}

@@ -28,11 +28,43 @@
   color: #61dafb;
 }
 
+.usersList {
+  width: 75%;
+}
+.userCardInformation {
+  width: 30%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  :root {
+    font-size: .7vw;
+  }
+}
+@media screen and (max-width: 1024px) {
+  :root {
+    font-size: 1.4vw;
+  }
+  .usersList {
+    width: 95%;
+  }
+  .userCardInformation {
+    width: 49%;
+  }
+}
+@media screen and (max-width: 425px) {
+  :root {
+    font-size: 3.2vw;
+  }
+  .userCardInformation {
+    width: 100%;
   }
 }
