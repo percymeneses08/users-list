@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import Loader from '../../components/Loader/Loader'
@@ -7,7 +6,7 @@ import UsersCards from '../../components/UsersCards/UsersCards'
 
 import firebaseApp from '../../Config'
 
-function UsersList({ history, currentUserEmail }) {
+function UsersList({ history }) {
 
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState('')
@@ -35,7 +34,7 @@ function UsersList({ history, currentUserEmail }) {
     }
   }
 
-  const signOut = event => {
+  const signOut = _ => {
     // event.preventDefault()
 
     firebaseApp.auth().signOut()
