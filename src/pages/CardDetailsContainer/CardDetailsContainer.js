@@ -61,7 +61,6 @@ function CardDetailsContainer({ ...rest }) {
             <button className="btn btn-danger" onClick={handleDelete}>Delete account</button>
           </div>
         ) : (
-            // <Link className="btn btn-warning mt-3" to="/users_list">Go back</Link>
             <div></div>
           )
       }

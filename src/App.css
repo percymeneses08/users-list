@@ -31,9 +31,6 @@
 .usersList {
   width: 75%;
 }
-.userCardInformation {
-  width: 30%;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -63,8 +60,5 @@
 @media screen and (max-width: 425px) {
   :root {
     font-size: 3.2vw;
-  }
-  .userCardInformation {
-    width: 100%;
   }
 }

@@ -31,7 +31,6 @@ function Signup({ history }) {
       const id = save.id
       await collection.doc(id).update({ id: id })
 
-      // history.push('/UsersList')
       history.push('/users_list')
       setLoader(false)
     } catch (error) {

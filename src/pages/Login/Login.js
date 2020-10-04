@@ -19,7 +19,6 @@ function Login({ history }) {
     } catch (err) {
       setError(err)
       console.log(error)
-      // history.push('/login')
     }
   }
 

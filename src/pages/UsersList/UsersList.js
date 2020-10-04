@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import Loader from '../../components/Loader/Loader'
 import UsersCards from '../../components/UsersCards/UsersCards'
+import './UsersList.css'
 
 import firebaseApp from '../../Config'
 
@@ -58,11 +59,11 @@ function UsersList({ history }) {
   return (
     <div className="usersList d-flex flex-column mx-auto">
       <button className="btn btn-danger align-self-end mt-4 mb-4 mr-4" onClick={signOut}>Sign Out</button>
-      <div className="d-flex justify-content-between flex-wrap">
+      <div className="usersList__content">
         {
           data.map(item => {
             return (
-              <div className="mr-2 mb-4 userCardInformation" key={item.id}>
+              <div className="userCardInformation" key={item.id}>
                 <Link to={`/users_list/${item.id}`} className="text-decoration-none">
                   <UsersCards
                     cards={item}
