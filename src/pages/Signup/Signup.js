@@ -41,7 +41,7 @@ function Signup({ history }) {
     }
   }
   const handleClick = _ => {
-    // console.log('Sign up clicked')
+    // console.log('Sign up clicked ')
   }
   const handleChange = event => {
     const { name, value } = event.currentTarget
